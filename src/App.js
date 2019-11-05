@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       filterText: '',
-      selectedBuilding: 1
+      selectedBuilding: 0
     };
   }
 
@@ -59,6 +59,7 @@ class App extends React.Component {
                   <BuildingList
                     data={this.props.data}
                     filterText = {this.state.filterText}
+                    selectedUpdate = {this.selectedUpdate.bind(this)}
                   />
                 </table>
               </div>

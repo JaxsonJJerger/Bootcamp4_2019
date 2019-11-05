@@ -13,8 +13,12 @@ class BuilingList extends React.Component {
 			.map(directory => {
 				return (
 					<tr key={directory.id}>
-						<td>{directory.code} </td>
-						<td> {directory.name} </td>
+						<td
+						onClick = {() => this.props.selectedUpdate(directory.id)}
+						>{directory.code} </td>
+						<td
+						onClick = {() => this.props.selectedUpdate(directory.id)}
+						> {directory.name} </td>
 					</tr>
 				);
 			});
