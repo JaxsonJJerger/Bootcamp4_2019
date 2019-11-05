@@ -1,11 +1,17 @@
 import React from 'react';
 
+
 class ViewBuilding extends React.Component {
+	
 	render() {
+		
+		
+
+		//console.log(selected)
 		return (
 			<div>
 				<p>
-					{' '}
+					{}
 					<i>Click on a name to view more information</i>
 				</p>
 			</div>
