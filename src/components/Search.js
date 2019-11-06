@@ -18,7 +18,6 @@ class Search extends React.Component {
 			<form>
 				<input 
 				ref = { (value) => {this.filterInput = value}}
-				//value={filter_value}
 				type="text" placeholder="Type to Filter"
 				onChange = {this.filterUpdate.bind(this)} 
 				/>

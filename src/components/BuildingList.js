@@ -1,5 +1,8 @@
 import React from 'react';
-
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+//import renderTooltip from 'react-bootstrap/renderTooltip'
 class BuilingList extends React.Component {
 	
 	render() {
@@ -24,14 +27,16 @@ class BuilingList extends React.Component {
 				})
 			.map(directory => {
 				return (
-					<tr key={directory.id}>
-						<td
-						onClick = {() => this.props.selectedUpdate(directory.id)}
-						>{directory.code} </td>
-						<td
-						onClick = {() => this.props.selectedUpdate(directory.id)}
-						> {directory.name} </td>
-					</tr>
+					<Row key={directory.id}>
+						<Col sm = "2" class="hover"
+						onClick = {() => this.props.selectedUpdate(directory.id)}>
+							{directory.code} 
+						</Col>
+						<Col sm = "10" class="hover"
+						onClick = {() => this.props.selectedUpdate(directory.id)}>
+							 {directory.name} 
+						</Col>
+					</Row>
 				);
 			});
 
@@ -39,3 +44,4 @@ class BuilingList extends React.Component {
 	}
 }
 export default BuilingList;
+//overlay={renderTooltip}

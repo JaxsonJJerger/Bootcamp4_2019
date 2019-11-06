@@ -2,8 +2,14 @@ import React from 'react';
 import Search from './components/Search';
 import ViewBuilding from './components/ViewBuilding';
 import BuildingList from './components/BuildingList';
-//import RemoveBuilding from './components/RemoveBuilding';
+import AddBuilding from './components/AddBuilding';
 import Credit from './components/Credit';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button'
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 class App extends React.Component {
   constructor(props) {
@@ -41,31 +47,41 @@ class App extends React.Component {
   }
 
   render() {
+    //<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
     console.log("Filter State from parent: " + this.state.filterText)
     return (
-      <div className="bg">
-        <div className="row">
-          <h1>UF Directory App</h1>
-        </div>
-        
-        <Search
-          filterText = {this.state.filterText}
-          filterUpdate = {this.filterUpdate.bind(this)}
+      <div>
+        <Jumbotron fluid>
+          <Row>
+            <Col sm="3"/><Col class="text-center"><h1>UF Directory App</h1></Col><Col sm="3"/>
+          </Row>
+        </Jumbotron>
           
-        />
-        <div className="row">
-          Searching for:
-        </div>
+      
+      
+      <Container>
+      <div className="bg">
+          
+        <Row>
+          <Col>
+            <Search
+              filterText = {this.state.filterText}
+              filterUpdate = {this.filterUpdate.bind(this)}
+              
+            />
+        </Col>
+        </Row>
+        <Row>
         <main>
           <div className="row">
             <div className="column1">
+            <Row>
+                  <Col sm = "2"><b>Code</b></Col>
+                   <Col sm = "10"><b>Building</b></Col>
+            </Row>
               <div className="tableWrapper">
+                
                 <table className="table table-striped table-hover">
-                  <tr>
-                    <td>
-                      <b>Code Building</b>
-                    </td>
-                  </tr>
                   <BuildingList
                     data={this.props.data}
                     filterText = {this.state.filterText}
@@ -83,11 +99,16 @@ class App extends React.Component {
               removedBuildings = {this.state.removedBuildings}
               removeListing = {this.removeListing.bind(this)}
               />
-              
+              <AddBuilding
+              data = {this.props.data}
+              />
             </div>
           </div>
           <Credit />
         </main>
+        </Row>
+        </div>
+      </Container>
       </div>
     );
   }

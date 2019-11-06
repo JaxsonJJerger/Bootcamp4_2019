@@ -1,6 +1,8 @@
 import React from 'react';
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 class ViewBuilding extends React.Component {
 	
 	render() {
@@ -22,14 +24,15 @@ class ViewBuilding extends React.Component {
 		.map(directory => {
 			return(
 				<div key = {directory.id}>
-					<div>ID: {directory.id}</div>
-					<div>Code: {directory.code}</div>
-					<div>Building: {directory.name}</div>
-					<div>Address: {directory.address}</div>
-					<button variant="primary" type = "Delete"
-					value = "delete" onClick={() => this.props.removeListing(directory.id)}>
+					<Row><Col sm="3">ID:</Col> <Col sm="9">{directory.id}</Col></Row>
+					<Row><Col sm="3">Code:</Col> <Col sm="9">{directory.code}</Col></Row>
+					<Row><Col sm="3">Building:</Col> <Col sm="9">{directory.name}</Col></Row>
+					<Row><Col sm="3">Address:</Col> <Col sm="9">{directory.address}</Col></Row>
+					<Button variant="primary" type = "Delete"
+					value = "delete" variant="danger"
+					onClick={() => this.props.removeListing(directory.id)}>
 							Delete
-				</button>
+				</Button>
 				</div>
 			)
 		})
