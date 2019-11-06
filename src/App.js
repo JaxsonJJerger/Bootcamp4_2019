@@ -2,6 +2,7 @@ import React from 'react';
 import Search from './components/Search';
 import ViewBuilding from './components/ViewBuilding';
 import BuildingList from './components/BuildingList';
+//import RemoveBuilding from './components/RemoveBuilding';
 import Credit from './components/Credit';
 
 class App extends React.Component {
@@ -9,7 +10,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       filterText: '',
-      selectedBuilding: 0
+      selectedBuilding: 0,
+      removedBuildings: [] //.push(1) to add to end of array
     };
   }
 
@@ -27,7 +29,15 @@ class App extends React.Component {
     this.setState ({
       selectedBuilding: id
     });
-    console.log("The building, " + this.state.selectedBuilding + ", has been selected");
+    
+  }
+
+  removeListing(id){
+    this.setState ( {
+      removedBuildings: this.state.removedBuildings.concat(id)
+    })
+    console.log("Buildings Removed: " + this.state.removedBuildings);
+
   }
 
   render() {
@@ -60,7 +70,9 @@ class App extends React.Component {
                     data={this.props.data}
                     filterText = {this.state.filterText}
                     selectedUpdate = {this.selectedUpdate.bind(this)}
+                    removedBuildings = {this.state.removedBuildings}
                   />
+                  
                 </table>
               </div>
             </div>
@@ -68,7 +80,10 @@ class App extends React.Component {
               <ViewBuilding 
               selectedBuilding = {this.state.selectedBuilding}
               data = {this.props.data}
+              removedBuildings = {this.state.removedBuildings}
+              removeListing = {this.removeListing.bind(this)}
               />
+              
             </div>
           </div>
           <Credit />
@@ -79,3 +94,9 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+//<RemoveBuilding
+ //                 selectedBuilding = {this.state.selectedBuilding}
+   //               data = {this.props.data}
+     //         />
